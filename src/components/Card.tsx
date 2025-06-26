@@ -29,7 +29,7 @@ export const Card = ({
 
   return (
     <motion.div
-      whileHover={{ y: -5 }}
+      whileHover={{ opacity: 0.8 }}
       whileTap={{ scale: 0.95 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -40,14 +40,13 @@ export const Card = ({
         'w-full h-fit relative',
         'flex flex-col justify-center items-center transition-all duration-300 ease-in-out',
         'bg-white',
-        'rounded-xl overflow-hidden',
-        'shadow-lg',
+        'overflow-hidden',
         'cursor-pointer',
       )}
     >
       {/* 카테고리 태그 */}
       {properties.category && (
-        <span className='absolute top-3 left-3 bg-blue-700 text-xs text-white px-2 py-0.5 rounded-full'>
+        <span className='absolute top-3 left-3 bg-black text-xs text-white uppercase px-2 py-0.5 rounded-lg'>
           {properties.category}
         </span>
       )}
@@ -74,7 +73,7 @@ export const Card = ({
         {properties.tag.length > 0 && (
           <div className='w-full h-fit flex flex-row items-center justify-start gap-2'>
             {properties.tag.map((t, index) => (
-              <span key={index} className='text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-lg'>
+              <span key={index} className='text-xs bg-gray-100 text-gray-500 px-2 py-0.5'>
                 {t.name}
               </span>
             ))}

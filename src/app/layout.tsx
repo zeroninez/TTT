@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { METADATA } from './config/metadata'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
-import { pretendard } from '@/theme/font'
+import { pretendard, akzidenzGrotesk } from '@/theme/font'
 import '@/styles/globals.css'
 import { Layout } from '@/components'
 
@@ -88,7 +88,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${pretendard.variable} antialiased`}>
+      <body className={`${pretendard.variable} ${akzidenzGrotesk.variable} antialiased`}>
         <Layout>{children}</Layout>
       </body>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />

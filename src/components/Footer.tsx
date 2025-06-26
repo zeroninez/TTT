@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { Logo } from './Logo'
+import { motion } from 'framer-motion'
 /**
  * Footer
  * - Footer는 페이지 하단에 위치하는 Footer입니다.
@@ -17,57 +18,54 @@ export const Footer = () => {
   const router = useRouter()
 
   return (
-    <div className='w-full h-fit bg-footer px-7 py-12 flex flex-col gap-32 bg-black text-white items-center justify-between'>
-      <div className='w-full flex flex-row items-center justify-between'>
-        <div onClick={() => router.push('/')} className='cursor-pointer hover:opacity-70 active:scale-95 transition'>
-          TTT
+    <div className='w-full min-h-[400px] h-fit px-6 md:px-12 py-6 md:py-8 flex flex-row gap-32 border-t border-gray-200 bg-white text-black'>
+      <div className='w-full flex flex-col justify-between items-start gap-8 md:gap-12'>
+        <div className='w-full h-fit flex flex-col items-start justify-center gap-6 md:gap-8'>
+          <Logo className='w-full h-auto' />
+          <div className='w-fit h-fit text-xs md:text-sm flex flex-row items-center justify-center gap-4'>
+            한 달에 한 개의 브랜드만을 다루는 프리미엄 매거진 커머스. <br />
+            디자이너의 섬세한 관점으로 발견한 브랜드 스토리를 전합니다.
+          </div>
+        </div>
+        <p className='w-full h-fit text-xs md:text-sm leading-none'>
+          © {new Date().getFullYear()} TABTOTAB. All rights reserved.
+        </p>
+      </div>
+      {/* sitemap */}
+      <div className='w-full flex flex-row justify-between items-start gap-8 md:gap-12'>
+        <div className='w-full h-fit uppercase text-sm md:text-base flex flex-row items-start justify-start gap-8'>
+          <div className='flex w-full flex-col items-start justify-start gap-2'>
+            <span className='font-medium'>TABTOTAB</span>
+            <span
+              className='cursor-pointer hover:opacity-70 active:scale-95 transition'
+              onClick={() => router.push('/about')}
+            >
+              About
+            </span>
+          </div>
+          <div className='flex w-full flex-col items-start justify-start gap-2'>
+            <span className='font-medium'>STORY</span>
+            <span
+              className='cursor-pointer hover:opacity-70 active:scale-95 transition'
+              onClick={() => router.push('/local')}
+            >
+              Local
+            </span>
+            <span
+              className='cursor-pointer hover:opacity-70 active:scale-95 transition'
+              onClick={() => router.push('/expert')}
+            >
+              Expert
+            </span>
+            <span
+              className='cursor-pointer hover:opacity-70 active:scale-95 transition'
+              onClick={() => router.push('/things')}
+            >
+              Things
+            </span>
+          </div>
         </div>
       </div>
-      <div className='w-full flex flex-row items-end justify-between'>
-        <div className='w-fit h-fit flex flex-col gap-5'>
-          <p className='text-xl leading-none'>© 2025 TTT.</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const SNSLinks = () => {
-  const sns = [
-    { icon: 'youtube', link: 'https://www.youtube.com/' },
-    { icon: 'instagram', link: 'https://www.instagram.com/' },
-    { icon: 'x', link: 'https://x.com/' },
-  ]
-
-  return (
-    <div className='w-fit h-fit flex flex-row gap-4'>
-      {sns.map((sns, index) => (
-        <div
-          key={index}
-          className='w-fit h-fit p-2.5 rounded-full cursor-pointer bg-black text-white md:hover:opacity-70 active:scale-95 transition'
-          onClick={() => window.open(sns.link)}
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth={2}
-              d={sns.icon === 'x' ? 'M6 18L18 6M6 6l12 12' : `M12 3v18m-6-6h12`}
-            />
-            {sns.icon === 'x' ? (
-              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
-            ) : (
-              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d={`M12 3v18m-6-6h12`} />
-            )}
-          </svg>
-        </div>
-      ))}
     </div>
   )
 }

@@ -24,14 +24,14 @@ export default async function Page({ params }: { params: PageParams }) {
 
   return (
     <>
-      <div className='w-full max-w-4xl h-fit px-4 md:px-6 py-12 md:py-20 flex flex-col items-start justify-start gap-4'>
+      <div className='w-full h-fit px-6 md:px-12 py-6 md:py-182 flex flex-col items-start justify-start gap-4'>
         <Breadcrumbs />
         <span className='text-xs md:text-sm text-gray-500'>Vol | {createdTime}</span>
         <span className='text-4xl md:text-6xl font-semibold leading-none'>{title}</span>
         <span className='text-lg md:text-xl text-gray-500'>{subTitle}</span>
       </div>
       <div className='w-full h-px bg-gray-200 my-4' />
-      <div className='w-full max-w-4xl h-fit px-4 md:px-6  py-8 md:py-12 flex flex-col items-start justify-start gap-4'>
+      <div className='w-full min-h-dvh h-fit px-6 md:px-12  py-8 md:py-12 flex flex-col items-start justify-start gap-4'>
         {content.length > 0 ? (
           <NotionRenderer blocks={content} />
         ) : (

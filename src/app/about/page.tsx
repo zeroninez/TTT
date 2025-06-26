@@ -1,4 +1,4 @@
-import { Breadcrumbs } from '@/components'
+import { Breadcrumbs, Logo } from '@/components'
 import classNames from 'classnames'
 
 export default function About() {
@@ -11,41 +11,16 @@ export default function About() {
 
   return (
     <>
-      <div className='w-full h-fit px-6  md:px-12 pt-0 md:pt-12 pb-6 md:pb-8 '>
+      <div className='w-full h-fit flex flex-col justify-center items-start px-6 md:px-12 gap-2 md:gap-4 py-6 md:py-8'>
         <Breadcrumbs />
-        <span className='text-6xl md:text-8xl font-bold leading-none'>About</span>
+        <span className='text-4xl md:text-6xl leading-none'>ABOUT</span>
       </div>
 
-      <div className='px-6 md:px-12 w-full h-fit py-24 flex flex-col justify-center items-center'>
-        <p className='w-full h-fit text-left text-2xl md:text-6xl leading-tight font-bold'>
-          We strive to find the best solutions,
-          <br />
-          unleash our exceptional design sensibility,
-          <br />
-          and further enhance the value we bring to you.
-        </p>
-      </div>
-      <div className='w-full h-fit flex flex-col gap-12 justify-center items-center'>
-        <p className='w-full h-fit px-6 md:px-12 text-left text-2xl md:text-4xl leading-tight font-medium'>
-          Zeroninez is the Design Studio
-          <br />
-          for value-up eXperience.
-        </p>
-        <div className='w-full h-fit flex flex-col justify-start items-start '>
-          {business.map((item, index) => (
-            <div key={index} className='w-full h-fit flex flex-col'>
-              {index === 0 && <hr className='w-full border-black' />}
-              <div
-                className={classNames(
-                  'w-full h-fit px-6 md:px-12 py-8 text-lg md:text-2xl leading-tight',
-                  'hover:bg-gray-100 transition duration-200 cursor-pointer active:scale-95',
-                )}
-              >
-                {item}
-              </div>
-              {index === business.length - 1 ? null : <hr className='w-full border-black' />}
-            </div>
-          ))}
+      <div className='w-full min-h-dvh h-fit flex flex-col gap-12 justify-center items-center'>
+        <Logo className='w-32 md:w-48 h-auto' />
+        <div className='w-full max-w-2xl h-fit text-sm md:text-base text-center leading-relaxed'>
+          한 달에 한 개의 브랜드만을 다루는 프리미엄 매거진 커머스. <br />
+          디자이너의 섬세한 관점으로 발견한 브랜드 스토리를 전합니다.
         </div>
       </div>
     </>

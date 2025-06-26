@@ -9,7 +9,7 @@ export const Breadcrumbs = () => {
   const pathSegments = pathname.split('/').filter((segment) => segment)
 
   return (
-    <nav className='w-full h-fit text-left text-sm text-gray-500'>
+    <nav className='w-full uppercase h-fit text-left text-sm text-gray-500'>
       <ul className='flex space-x-0'>
         <li>
           <Link href='/' className='hover:underline '>
