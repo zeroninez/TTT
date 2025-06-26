@@ -10,5 +10,5 @@ export const METADATA = {
       email: 'info@zeroninez.com',
     },
   ],
-  url: 'https://www.zeroninez.com',
+  url: 'https://tabtotab.vercel.app/',
 }
