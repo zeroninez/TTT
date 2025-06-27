@@ -7,40 +7,36 @@ export const NotionBlock = ({ block }: { block: BlockObjectResponse }) => {
 
   switch (type) {
     case 'paragraph':
-      return (
-        <p className='text-lg text-gray-800 mb-4'>
-          {block.paragraph.rich_text.map((text) => text.plain_text).join(' ')}
-        </p>
-      )
+      return <p className='text-lg mb-4'>{block.paragraph.rich_text.map((text) => text.plain_text).join(' ')}</p>
 
     case 'heading_1':
-      return <h1 className='text-3xl font-bold my-4'>{block.heading_1.rich_text[0]?.plain_text}</h1>
+      return <h1 className='text-3xl font-bold mb-4'>{block.heading_1.rich_text[0]?.plain_text}</h1>
 
     case 'heading_2':
-      return <h2 className='text-2xl font-semibold my-3'>{block.heading_2.rich_text[0]?.plain_text}</h2>
+      return <h2 className='text-2xl font-semibold mb-3'>{block.heading_2.rich_text[0]?.plain_text}</h2>
 
     case 'heading_3':
-      return <h3 className='text-xl font-semibold my-2'>{block.heading_3.rich_text[0]?.plain_text}</h3>
+      return <h3 className='text-xl font-semibold mb-2'>{block.heading_3.rich_text[0]?.plain_text}</h3>
 
     case 'bulleted_list_item':
       return (
-        <li className='list-disc ml-6 text-gray-700'>
+        <li className='list-disc ml-6 '>
           {block.bulleted_list_item.rich_text.map((text) => text.plain_text).join(' ')}
         </li>
       )
 
     case 'numbered_list_item':
       return (
-        <li className='list-decimal ml-6 text-gray-700'>
+        <li className='list-decimal ml-6 '>
           {block.numbered_list_item.rich_text.map((text) => text.plain_text).join(' ')}
         </li>
       )
 
     case 'quote':
       return (
-        <blockquote className='border-l-4 border-gray-400 pl-4 italic text-gray-600'>
-          {block.quote.rich_text.map((text) => text.plain_text).join(' ')}
-        </blockquote>
+        <div className='italic text-xl font-semibold'>
+          {`"${block.quote.rich_text.map((text) => text.plain_text).join(' ')}"`}
+        </div>
       )
 
     case 'divider':
@@ -48,7 +44,7 @@ export const NotionBlock = ({ block }: { block: BlockObjectResponse }) => {
 
     case 'callout':
       return (
-        <div className='p-4 border-l-4 border-blue-500 bg-blue-100 rounded-lg'>
+        <div className='p-4  bg-black/10 text-black'>
           {block.callout.icon?.type === 'emoji' && <span className='mr-2'>{block.callout.icon.emoji}</span>}
           {block.callout.rich_text.map((text) => text.plain_text).join(' ')}
         </div>
@@ -56,23 +52,24 @@ export const NotionBlock = ({ block }: { block: BlockObjectResponse }) => {
 
     case 'toggle':
       return (
-        <details className='bg-gray-100 p-2 rounded-lg'>
+        <details className=' p-2'>
           <summary className='font-semibold cursor-pointer'>
             {block.toggle.rich_text.map((text) => text.plain_text).join(' ')}
           </summary>
+          <div className='pl-4'></div>
         </details>
       )
 
     case 'code':
       return (
-        <pre className='bg-gray-900 text-white p-4 rounded-lg text-sm'>
+        <pre className='bg-gray-900 text-white p-4 text-sm'>
           <code>{block.code.rich_text.map((text) => text.plain_text).join('\n')}</code>
         </pre>
       )
 
     case 'image':
       return (
-        <div className='relative w-full h-fit my-4'>
+        <div className='relative w-full h-fit mb-4'>
           <img
             src={
               block.image.type === 'file'
@@ -80,15 +77,15 @@ export const NotionBlock = ({ block }: { block: BlockObjectResponse }) => {
                 : block.image.external.url
             }
             alt='Notion Image'
-            className='object-cover w-full h-full rounded-lg'
+            className='object-cover w-full h-full'
           />
         </div>
       )
 
     case 'video':
       return (
-        <div className='relative w-full my-4'>
-          <video controls className='w-full rounded-lg'>
+        <div className='relative w-full mb-4'>
+          <video controls className='w-full'>
             <source
               src={
                 block.video.type === 'file'
@@ -119,13 +116,7 @@ export const NotionBlock = ({ block }: { block: BlockObjectResponse }) => {
       )
 
     case 'embed':
-      return (
-        <iframe
-          src={block.embed.url}
-          className='w-full h-64 my-4 rounded-lg border border-gray-300'
-          allowFullScreen
-        ></iframe>
-      )
+      return <iframe src={block.embed.url} className='w-full h-64 mb-4 border border-gray-300' allowFullScreen></iframe>
 
     case 'table':
       return (

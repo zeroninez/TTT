@@ -1,3 +1,5 @@
+//@/types/index.ts
+
 // ✅ Item 타입 정의
 export interface Item {
   id: string

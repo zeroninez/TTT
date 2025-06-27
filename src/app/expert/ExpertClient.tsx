@@ -1,67 +1,19 @@
 // src/app/page.tsx
 'use client'
 
-import { Card, RecommendedCard } from '@/components'
+import { ListPage } from '@/components'
 
 export default function ExpertClient(props) {
   const { parsedExpert } = props
 
-  const recommendedExpert = parsedExpert.filter((item) => item.properties.recommended)
-
   return (
     <>
-      <div className='w-full h-fit px-6 md:px-12 flex flex-col items-start justify-center py-12 md:pb-20'>
-        <span className='text-4xl md:text-6xl font-akzidenzGrotesk'>EXPERT</span>
-        <p className='text-base md:text-lg opacity-70 mt-2'>
-          지역에 뿌리내린 브랜드들의 이야기를 전합니다. 전통과 현대가 만나는 특별한 순간들을 발견하세요.
-        </p>
-      </div>
-      {/* recommended */}
-      <div className='flex flex-col gap-6 md:gap-8 w-full px-6 md:px-12 h-fit pb-12'>
-        {recommendedExpert.map(({ id, properties }) => {
-          return (
-            <RecommendedCard
-              page='expert'
-              key={id}
-              id={id}
-              properties={{
-                thumbnail: properties.thumbnail,
-                title: properties.title,
-                subtitle: properties.subtitle,
-                description: properties.description,
-                slug: properties.slug,
-                category: properties.category,
-                tag: properties.tag,
-                lastEdited: properties.lastEdited,
-              }}
-            />
-          )
-        })}
-      </div>
-      <div className='w-full h-fit px-6 md:px-12 flex flex-col items-start justify-start pt-0 md:pt-12 pb-6 md:pb-8'>
-        <span className='text-sm md:text-lg mb-4'>ALL</span>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 bg-gray-200 gap-[1px] w-full h-fit p-[1px]'>
-          {parsedExpert.map(({ id, properties }) => {
-            return (
-              <Card
-                page='expert'
-                key={id}
-                id={id}
-                properties={{
-                  thumbnail: properties.thumbnail,
-                  title: properties.title,
-                  subtitle: properties.subtitle,
-                  description: properties.description,
-                  slug: properties.slug,
-                  category: properties.category,
-                  tag: properties.tag,
-                  lastEdited: properties.lastEdited,
-                }}
-              />
-            )
-          })}
-        </div>
-      </div>
+      <ListPage
+        type='expert'
+        title='EXPERT'
+        description='지역에 뿌리내린 브랜드들의 이야기를 전합니다. 전통과 현대가 만나는 특별한 순간들을 발견하세요.'
+        parsedItems={parsedExpert}
+      />
       <div className='w-full h-fit  px-6 md:px-12 flex flex-col items-start justify-start py-8 md:py-12 gap-6'>
         <div className='w-full h-auto aspect-[5/1] px-12 bg-black py-6 rounded-lg flex flex-col items-center justify-center gap-4'>
           <span className='text-2xl md:text-4xl text-white font-bold'>로컬 브랜드를 추천해주세요!</span>

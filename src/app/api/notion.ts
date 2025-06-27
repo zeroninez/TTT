@@ -4,6 +4,9 @@ import { Client } from '@notionhq/client'
 import { BlockObjectResponse, PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { cache } from 'react'
 
+// ✅ 로컬 페이지 데이터 가져오기 및 파싱
+import { Item } from '@/types'
+
 // ✅ Notion API 연결
 const TOKEN = process.env.NEXT_PUBLIC_NOTION_TOKEN as string
 
@@ -76,3 +79,58 @@ export const getPageContent = cache(async (pageId: string) => {
     return [] // 에러 발생 시 빈 배열 반환 (페이지 깨짐 방지)
   }
 })
+
+// 반환 타입 정의
+interface ParsedItem {
+  id: string
+  properties: {
+    title: string
+    subtitle: string
+    description: string
+    slug: string
+    createdTime: string
+    lastEdited: string
+    tag: any[]
+    category: string
+    thumbnail: string
+    recommended: boolean
+  }
+}
+
+// 방법 1: 타입을 명확히 분리
+export const getParsedItemsByTableType = async (itemType: 'local' | 'expert' | 'things'): Promise<ParsedItem[]> => {
+  // 변수명 변경으로 충돌 방지
+  const rawItems = await getPagesByTableType(itemType)
+
+  return rawItems.map((rawItem: Item) => {
+    const thumbnail = `https://zeroninez.notion.site/image/${encodeURIComponent(
+      rawItem.properties.thumbnail?.files[0]?.file?.url || '',
+    )}?table=block&id=${rawItem.id}&cache=v2`
+
+    const category = rawItem.properties.category?.select?.name || 'No Category'
+    const title = rawItem.properties.title?.title[0]?.plain_text || 'No Title'
+    const subtitle = rawItem.properties.subtitle?.rich_text[0]?.plain_text || 'No Subtitle'
+    const description = rawItem.properties.description?.rich_text[0]?.plain_text || 'No Description'
+    const slug = rawItem.properties.slug?.rich_text[0]?.plain_text || 'No Slug'
+    const createdTime = rawItem.properties.createdTime?.created_time || new Date().toISOString()
+    const lastEdited = rawItem.properties.lastEditedTime?.last_edited_time || new Date().toISOString()
+    const recommended = rawItem.properties.recommended?.checkbox || false
+    const tag = rawItem.properties.tag?.multi_select || []
+
+    return {
+      id: rawItem.id,
+      properties: {
+        title,
+        subtitle,
+        description,
+        slug,
+        createdTime,
+        lastEdited,
+        tag,
+        category,
+        thumbnail,
+        recommended,
+      },
+    }
+  })
+}

@@ -38,7 +38,7 @@ export const Card = ({
       key={id}
       className={classNames(
         'w-full h-fit relative',
-        'flex flex-col justify-center items-center transition-all duration-300 ease-in-out',
+        'flex flex-col gap-4 justify-center items-center transition-all duration-300 ease-in-out',
         'bg-white',
         'overflow-hidden',
         'cursor-pointer',
@@ -46,13 +46,13 @@ export const Card = ({
     >
       {/* 카테고리 태그 */}
       {properties.category && (
-        <span className='absolute top-3 left-3 bg-black text-xs text-white uppercase px-2 py-0.5 rounded-lg'>
+        <span className='absolute top-3 left-3 bg-black text-xs text-white uppercase px-3 py-1 rounded-lg'>
           {properties.category}
         </span>
       )}
 
       {/* 썸네일 */}
-      <div className='w-full h-auto aspect-[4/3] bg-black text-white'>
+      <div className='w-full h-auto overflow-hidden aspect-[640/360] bg-black text-white'>
         <img
           src={properties.thumbnail}
           alt={properties.title}
@@ -60,20 +60,20 @@ export const Card = ({
         />
       </div>
       {/* 카드 내용 */}
-      <div className='w-full h-fit flex flex-col gap-3 items-start justify-start p-4 bg-white'>
+      <div className='w-full h-fit flex flex-col gap-3 items-start justify-start bg-white pb-4'>
         <span className='text-xl md:text-2xl leading-tight'>{properties.title}</span>
         <span className='text-sm md:text-base text-gray-600 leading-tight'>{properties.subtitle}</span>
         <p className='text-xs md:text-sm text-gray-500'>{properties.description}</p>
         {/* 마지막 수정 시간 */}
         <div className='w-full h-fit flex flex-row items-center justify-start gap-2 text-xs text-gray-500'>
-          <p className=''>{'작성자'}</p>
+          {/* <p className=''>{'작성자'}</p> */}
           <p className=''>{getRelativeTime(properties.lastEdited)}</p>
         </div>
         {/* 태그 */}
         {properties.tag.length > 0 && (
           <div className='w-full h-fit flex flex-row items-center justify-start gap-2'>
             {properties.tag.map((t, index) => (
-              <span key={index} className='text-xs bg-gray-100 text-gray-500 px-2 py-0.5'>
+              <span key={index} className='text-xs bg-black text-white px-2 py-0.5'>
                 {t.name}
               </span>
             ))}

@@ -34,13 +34,13 @@ export const RecommendedCard = ({
       transition={{ duration: 0.3, ease: 'easeInOut' }}
       key={id}
       className={classNames(
-        'w-full h-auto aspect-[5/1] relative',
-        'flex flex-row justify-between items-center transition-all duration-300 ease-in-out',
+        'w-full h-fit relative',
+        'flex flex-col md:flex-row justify-between items-center transition-all duration-300 ease-in-out',
         'bg-black text-white',
       )}
     >
       {/* 카드 내용 */}
-      <div className='w-full h-full flex flex-col gap-4 items-start justify-between p-6 md:p-8'>
+      <div className='w-full h-fit md:h-96 flex flex-col gap-8 items-start justify-between p-6 md:p-8'>
         <div className='w-full h-fit flex flex-col items-start justify-start gap-2'>
           <span className=' bg-white text-xs text-black px-3 py-1 rounded-lg mb-2'>추천 로컬 브랜드</span>
 
@@ -77,7 +77,7 @@ export const RecommendedCard = ({
         </button>
       </div>
       {/* 썸네일 */}
-      <div className='w-full h-auto aspect-[4/3] '>
+      <div className='w-full md:w-auto h-auto md:h-96 md:aspect-[5/3] lg:aspect-[5/1] overflow-hidden'>
         <img
           src={properties.thumbnail}
           alt={properties.title}
