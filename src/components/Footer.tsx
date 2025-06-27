@@ -25,7 +25,10 @@ export const Footer = () => {
     <div className='w-full h-fit px-6 md:px-12 py-6 md:py-8 gap-24 md:gap-20 flex flex-col justify-between border-t border-gray-200 bg-white text-black'>
       <div className='w-full flex flex-col md:flex-row items-stretch justify-between gap-12 md:gap-8'>
         <div className='w-full flex flex-col justify-between items-start gap-6 md:gap-8'>
-          <Logo className='w-full md:w-[90%] h-auto' />
+          <Logo
+            onClick={() => router.push('/')}
+            className='w-full md:w-[90%] h-auto hover:opacity-70 active:opacity-60 transition-all '
+          />
           <div className='w-fit h-fit text-sm md:text-sm flex flex-row items-center justify-center gap-4'>
             한 달에 한 개의 브랜드만을 다루는 프리미엄 매거진 커머스. <br />
             디자이너의 섬세한 관점으로 발견한 브랜드 스토리를 전합니다.

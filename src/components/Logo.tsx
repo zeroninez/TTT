@@ -2,11 +2,12 @@ import classNames from 'classnames'
 
 interface LogoProps {
   className?: string
+  onClick?: () => void
 }
 
-export const Logo = ({ className = '' }: LogoProps) => {
+export const Logo = ({ className = '', onClick, ...props }: LogoProps) => {
   return (
-    <div className={classNames('aspect-[1700/208]', className)}>
+    <div className={classNames('aspect-[1700/208]', className)} onClick={onClick} {...props}>
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1699 209' fill='currentColor'>
         <path d='M1698.92 65.8C1698.92 73.64 1697.52 95.76 1678.2 110.32C1661.12 123.48 1642.64 123.76 1622.2 123.76H1527.28V203H1498.72V5.32001H1619.68C1624.72 5.32001 1629.76 5.6 1634.8 5.88C1643.48 6.72001 1672.04 7.84001 1688.84 31.92C1695.56 41.72 1698.92 53.76 1698.92 65.8ZM1668.4 64.12C1668.4 60.48 1668.12 51.24 1661.4 42.84C1650.2 28.84 1631.16 28.84 1615.2 28.84H1527V100.24H1618.28C1633.68 100.24 1650.48 99.68 1661.12 86.52C1664.2 82.88 1668.4 75.88 1668.4 64.12Z' />
         <path d='M1475.75 203H1443.27L1419.19 154.28H1297.67L1273.59 203H1241.95L1344.43 5.32001H1374.39L1475.75 203ZM1407.15 131.6L1358.71 33.6L1309.43 131.6H1407.15Z' />

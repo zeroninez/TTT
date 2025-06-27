@@ -23,7 +23,7 @@ export default function HomeClient(props) {
         {/* Newly Added Section */}
         <div className='w-full h-fit flex flex-col items-start justify-center gap-6 md:gap-8'>
           <div className='w-full h-fit flex flex-col items-start justify-center gap-2'>
-            <h1 className='text-4xl md:text-6xl font-bold font-akzidenzGrotesk'>NEW</h1>
+            <h1 className='text-3xl md:text-6xl font-bold font-akzidenzGrotesk'>NEW</h1>
             <p className='text-lg md:text-xl text-gray-300'>따끈한 지역 브랜드들의 이야기를 만나보세요.</p>
           </div>
           <Grid items={recentlySortedAllItems} />
@@ -31,7 +31,7 @@ export default function HomeClient(props) {
         {/* Recommended Section */}
         <div className='w-full h-fit flex flex-col items-start justify-center gap-6 md:gap-8 pb-12 md:pb-16'>
           <div className='w-full h-fit flex flex-col items-start justify-center gap-2'>
-            <h1 className='text-4xl md:text-6xl font-bold font-akzidenzGrotesk'>RECOMMENDED</h1>
+            <h1 className='text-3xl md:text-6xl font-bold font-akzidenzGrotesk'>RECOMMENDED</h1>
             <p className='text-lg md:text-xl text-gray-300'>추천하는 지역 브랜드들의 이야기를 만나보세요.</p>
           </div>
           <Grid items={recentlySortedRecommendedItems} />
